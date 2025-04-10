@@ -1,0 +1,22 @@
+{
+  "name": "automation-exercises-playwright",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test-on-chrome": "npx playwright test --project=chromium",
+    "test-on-firefox": "npx playwright test --project=firefox",
+    "test-on-webkit": "npx playwright test --project=webkit",
+    "test-on-chrome-debug": "npx playwright test --project=chromium --debug",
+    "headed-mode": "npx playwright test --headed",
+    "code-gen": "npx playwright codegen"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.13.13"
+  }
+}
