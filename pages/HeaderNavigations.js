@@ -22,6 +22,9 @@ export default class HeaderNavigations {
     );
   }
 
+  async openHomePage() {
+    await this.page.goto("/");
+  }
   async gotoHome() {
     await this.homePage.click();
   }
@@ -70,7 +73,21 @@ export default class HeaderNavigations {
     await this.logout.click();
   }
 
-  async deleteAccount() {
+  async deleteUserAccount() {
     await this.deleteAccount.click();
+  }
+  async assertHomePageTitle(pageTitle) {
+    await expect(this.page).toHaveTitle(pageTitle);
+  }
+  async getHomePageTitle() {
+    console.log(await this.page.title());
+    return await this.page.title();
+  }
+
+  async getLoggedInUserContent() {
+    return await this.loggedInUser.textContent();
+  }
+  async getLoggedInUser() {
+    return await this.loggedInUser;
   }
 }

@@ -1,13 +1,13 @@
-class AcccountCreatedPage {
+export default class AcccountDeletedPage {
   constructor(page) {
     this.page = page;
     this.accountHeader = page.locator("h2[data-qa='account-deleted']");
     this.firstPTag = page.locator("#form > div > div > div > p:nth-child(2)");
     this.secondPTag = page.locator("#form > div > div > div > p:nth-child(3)");
-    this.continueButton = page.locator('button[data-qa="continue-button"]');
+    this.continueButton = page.locator('a[data-qa="continue-button"]');
   }
   async getAccountHeader() {
-    return await this.accountHeader.textContent();
+    return await this.accountHeader;
   }
 
   async getFirstPTag() {

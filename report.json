@@ -10,7 +10,9 @@
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
-    "metadata": {},
+    "metadata": {
+      "actualWorkers": 1
+    },
     "preserveOutput": "always",
     "reporter": [
       [
@@ -40,7 +42,9 @@
         "outputDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "chromium",
         "name": "chromium",
         "testDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests",
@@ -54,7 +58,9 @@
         "outputDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "firefox",
         "name": "firefox",
         "testDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests",
@@ -68,7 +74,9 @@
         "outputDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {},
+        "metadata": {
+          "actualWorkers": 1
+        },
         "id": "webkit",
         "name": "webkit",
         "testDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests",
@@ -86,21 +94,63 @@
     "workers": 4,
     "webServer": null
   },
-  "suites": [],
-  "errors": [
+  "suites": [
     {
-      "message": "SyntaxError: The requested module '../pages/AccountCreatedPage' does not provide an export named 'AccountCreatedPage'",
-      "stack": "SyntaxError: The requested module '../pages/AccountCreatedPage' does not provide an export named 'AccountCreatedPage'"
-    },
-    {
-      "message": "Error: No tests found",
-      "stack": "Error: No tests found"
+      "title": "register_login.spec.js",
+      "file": "register_login.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Login Page Tests",
+          "file": "register_login.spec.js",
+          "line": 9,
+          "column": 6,
+          "specs": [
+            {
+              "title": "Test Case 1: Register User",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 19377,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-20T20:15:22.673Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "27ec8054b3dea20b349b-5d2276c68ccd5fcc4aed",
+              "file": "register_login.spec.js",
+              "line": 27,
+              "column": 8
+            }
+          ]
+        }
+      ]
     }
   ],
+  "errors": [],
   "stats": {
-    "startTime": "2025-04-20T13:42:01.142Z",
-    "duration": 35.41300000000001,
-    "expected": 0,
+    "startTime": "2025-04-20T20:15:21.750Z",
+    "duration": 21340.905000000002,
+    "expected": 1,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

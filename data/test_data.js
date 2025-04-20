@@ -1,9 +1,9 @@
 export const userProfile = {
-  email: "testuser@gmail.com",
-  firstName: "Jak",
+  email: "testneyiryyyyvi0031p@gmail.com",
+  firstName: "Jakneyiryyyyvi0031p",
   lastName: "Spiro",
   company: "Zamak",
-  addres: "123 Main St",
+  address: "123 Main St",
   address2: "Apt 4B",
   state: "New York",
   city: "New York",
@@ -26,6 +26,9 @@ export const invalidUser = {
 export const staticContents = {
   homePageTitle: "Automation Exercise",
   loginPageTitle: "Login to your account",
-  signUpPageTitle: "New User Signup!",
-  accountCreatedPageTitle: "YOUR ACCOUNT HAS BEEN CREATED!",
+  signUpHeader: "New User Signup!",
+  accountCreatedPageHeader: "Account Created!",
+  signUpAccountHeader: "Enter Account Information",
+  accountDeletedPageHeader: "Account Deleted!",
+  signUpPageTitle: "Automation Exercise - Signup",
 };

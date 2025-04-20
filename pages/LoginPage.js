@@ -28,27 +28,27 @@ export default class LoginPage {
   }
 
   async getErrorMessage() {
-    return await this.errorMessage.textContent();
+    return await this.errorMessage;
   }
 
   async getLoginHeader() {
-    return await this.loginHeader.textContent();
+    return await this.loginHeader;
   }
 
   async getSignupHeader() {
-    return await this.signupHeader.textContent();
+    return await this.signupHeader;
   }
 
   async getSignupErrorMessage() {
-    return await this.signupErrorMessage.textContent();
+    return await this.signupErrorMessage;
   }
 
   async getLoginEmailAddress() {
-    return await this.loginEmailAddress.textContent();
+    return await this.loginEmailAddress;
   }
 
   async getLoginPassword() {
-    return await this.loginPassword.textContent();
+    return await this.loginPassword;
   }
   async goto() {
     await this.page.goto("/login");

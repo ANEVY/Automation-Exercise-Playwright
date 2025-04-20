@@ -5,11 +5,12 @@ export default class SignUpPage {
     this.mrsTitle = page.locator("input#id_gender2");
     this.name = page.locator('input[data-qa="name"]');
     this.email = page.locator('input[data-qa="email"]');
-    this.birthDay = page.locator('input[data-qa="days"]');
-    this.birthMonth = page.locator('input[data-qa="months"]');
-    this.birthYear = page.locator('input[data-qa="years"]');
+    this.password = page.locator('input[data-qa="password"]');
+    this.birthDay = page.locator('select[data-qa="days"]');
+    this.birthMonth = page.locator('select[data-qa="months"]');
+    this.birthYear = page.locator('select[data-qa="years"]');
     this.newsletter = page.locator("input#newsletter");
-    this.offer = page.locator("input#offers");
+    this.offer = page.locator("input#optin");
     this.firstName = page.locator('input[data-qa="first_name"]');
     this.lastName = page.locator('input[data-qa="last_name"]');
     this.company = page.locator('input[data-qa="company"]');
@@ -19,18 +20,17 @@ export default class SignUpPage {
     this.state = page.locator('input[data-qa="state"]');
     this.zipCode = page.locator('input[data-qa="zipcode"]');
     this.mobileNumber = page.locator('input[data-qa="mobile_number"]');
-    this.country = page.locator('input[data-qa="country"]');
+    this.country = page.locator('select[data-qa="country"]');
     this.createButton = page.locator('button[data-qa="create-account"]');
     this.accountHeader = page.locator("#form > div > div > div > div > h2");
     this.addressHeader = page.locator(
       "#form > div > div > div > div > form > h2"
     );
   }
-  async signUp(
+  async createAccount(
     title,
     firstName,
     lastName,
-    email,
     password,
     day,
     month,
@@ -43,8 +43,8 @@ export default class SignUpPage {
     zipCode,
     mobileNumber,
     country,
-    newsletter,
-    offer
+    newsletter = false,
+    offer = true
   ) {
     if (title.toLowerCase().replace(".", "") === "mrs") {
       await this.mrsTitle.check();
@@ -52,13 +52,13 @@ export default class SignUpPage {
       await this.mrTitle.check();
     }
     // await this.mrTitle.click();
-    await this.name.fill(firstName);
+    await this.firstName.fill(firstName);
     await this.lastName.fill(lastName);
-    await this.email.fill(email);
+    // await this.email.fill(email);
     await this.password.fill(password);
-    await this.birthDay.fill(day);
-    await this.birthMonth.fill(month);
-    await this.birthYear.fill(year);
+    await this.birthDay.selectOption(day);
+    await this.birthMonth.selectOption(month);
+    await this.birthYear.selectOption(year);
     await this.company.fill(company);
     await this.address.fill(address);
     await this.address2.fill(address2);
@@ -66,8 +66,7 @@ export default class SignUpPage {
     await this.state.fill(state);
     await this.zipCode.fill(zipCode);
     await this.mobileNumber.fill(mobileNumber);
-    await this.country.fill(country);
-    await this.createButton.click();
+    await this.country.selectOption(country);
     if (newsletter) {
       await this.newsletter.check();
     } else {
@@ -78,5 +77,14 @@ export default class SignUpPage {
     } else {
       await this.offer.uncheck();
     }
+    await this.createButton.click();
+  }
+
+  async getAccountHeader() {
+    return await this.accountHeader;
+  }
+
+  async getAddressHeader() {
+    return await this.addressHeader;
   }
 }
