@@ -8,7 +8,7 @@ class LoginPage {
     this.loginHeader = page.locator("div.login-form h2");
     this.signupHeader = page.locator("div.signup-form h2");
     this.signupEmailAddress = page.locator('input[data-qa="signup-email"]');
-    this.signupPassword = page.locator('input[data-qa="signup-password"]');
+    this.signupName = page.locator('input[data-qa="signup-name"]');
     this.signupButton = page.locator('button[data-qa="signup-button"]');
     this.signupErrorMessage = page.locator(
       'div[data-qa="signup-error-message"]'
@@ -21,9 +21,9 @@ class LoginPage {
     await this.loginButton.click();
   }
 
-  async signup(email, password) {
+  async signup(name, email) {
+    await this.signupName.fill(name);
     await this.signupEmailAddress.fill(email);
-    await this.signupPassword.fill(password);
     await this.signupButton.click();
   }
 
@@ -57,8 +57,9 @@ class LoginPage {
     await expect(this.loginHeader).toBeVisible();
   }
 
-  async assertSignupTitleIsVisible() {
+  async assertSignupTitleIsVisible(signUpTile) {
     await expect(this.signupHeader).toBeVisible();
+    await expect(this.signupHeader).toHaveText(signUpTile);
   }
 }
 
