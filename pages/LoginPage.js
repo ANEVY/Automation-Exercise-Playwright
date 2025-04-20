@@ -1,4 +1,4 @@
-class LoginPage {
+export default class LoginPage {
   constructor(page) {
     this.page = page;
     this.loginEmailAddress = page.locator('input[data-qa="login-email"]');
@@ -62,5 +62,3 @@ class LoginPage {
     await expect(this.signupHeader).toHaveText(signUpTile);
   }
 }
-
-module.exports = LoginPage;

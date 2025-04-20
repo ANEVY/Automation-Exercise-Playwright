@@ -1,4 +1,4 @@
-class SignUpPage {
+export default class SignUpPage {
   constructor(page) {
     this.page = page;
     this.mrTitle = page.locator("input#id_gender1");
@@ -80,5 +80,3 @@ class SignUpPage {
     }
   }
 }
-
-module.exports = { SignUpPage };

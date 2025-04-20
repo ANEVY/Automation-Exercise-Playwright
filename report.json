@@ -10,9 +10,7 @@
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
-    "metadata": {
-      "actualWorkers": 1
-    },
+    "metadata": {},
     "preserveOutput": "always",
     "reporter": [
       [
@@ -42,9 +40,7 @@
         "outputDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "chromium",
         "name": "chromium",
         "testDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests",
@@ -58,9 +54,7 @@
         "outputDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "firefox",
         "name": "firefox",
         "testDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests",
@@ -74,9 +68,7 @@
         "outputDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
-        "metadata": {
-          "actualWorkers": 1
-        },
+        "metadata": {},
         "id": "webkit",
         "name": "webkit",
         "testDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests",
@@ -94,119 +86,23 @@
     "workers": 4,
     "webServer": null
   },
-  "suites": [
+  "suites": [],
+  "errors": [
     {
-      "title": "register_login.spec.js",
-      "file": "register_login.spec.js",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Login Page Tests",
-          "file": "register_login.spec.js",
-          "line": 13,
-          "column": 6,
-          "specs": [
-            {
-              "title": "Test Case 1: Register User",
-              "ok": false,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "failed",
-                      "duration": 11950,
-                      "error": {
-                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"Automation Exercise\"\u001b[39m\nReceived string: \u001b[31m\"Automation Exercise\u001b[7m - Signup / Login\u001b[27m\"\u001b[39m\nCall log:\n\u001b[2m  - expect.toHaveTitle with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m    7 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"Automation Exercise - Signup / Login\"\u001b[22m\n",
-                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"Automation Exercise\"\u001b[39m\nReceived string: \u001b[31m\"Automation Exercise\u001b[7m - Signup / Login\u001b[27m\"\u001b[39m\nCall log:\n\u001b[2m  - expect.toHaveTitle with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m    7 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"Automation Exercise - Signup / Login\"\u001b[22m\n\n    at /Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests/register_login.spec.js:25:24",
-                        "matcherResult": {
-                          "name": "toHaveTitle",
-                          "expected": "Automation Exercise",
-                          "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"Automation Exercise\"\u001b[39m\nReceived string: \u001b[31m\"Automation Exercise\u001b[7m - Signup / Login\u001b[27m\"\u001b[39m\nCall log:\n\u001b[2m  - expect.toHaveTitle with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m    7 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"Automation Exercise - Signup / Login\"\u001b[22m\n",
-                          "pass": false,
-                          "actual": "Automation Exercise - Signup / Login",
-                          "log": [
-                            "  - expect.toHaveTitle with timeout 5000ms",
-                            "  - waiting for locator(':root')",
-                            "    7 × locator resolved to <html lang=\"en\">…</html>",
-                            "      - unexpected value \"Automation Exercise - Signup / Login\""
-                          ],
-                          "timeout": 5000
-                        },
-                        "location": {
-                          "file": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests/register_login.spec.js",
-                          "column": 24,
-                          "line": 25
-                        },
-                        "snippet": "\u001b[0m \u001b[90m 23 |\u001b[39m   test\u001b[33m.\u001b[39monly(\u001b[32m\"Test Case 1: Register User\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 24 |\u001b[39m     \u001b[90m//Verify that home page is visible successfully\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(staticContents\u001b[33m.\u001b[39mhomePageTitle)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[90m//Click on 'Signup / Login' button\u001b[39m\n \u001b[90m 27 |\u001b[39m     headerNavigations\u001b[33m.\u001b[39mgotoLogin()\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[90m//Verify 'New User Signup!' is visible\u001b[39m\u001b[0m"
-                      },
-                      "errors": [
-                        {
-                          "location": {
-                            "file": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests/register_login.spec.js",
-                            "column": 24,
-                            "line": 25
-                          },
-                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveTitle\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected string: \u001b[32m\"Automation Exercise\"\u001b[39m\nReceived string: \u001b[31m\"Automation Exercise\u001b[7m - Signup / Login\u001b[27m\"\u001b[39m\nCall log:\n\u001b[2m  - expect.toHaveTitle with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m    7 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"Automation Exercise - Signup / Login\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 23 |\u001b[39m   test\u001b[33m.\u001b[39monly(\u001b[32m\"Test Case 1: Register User\"\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 24 |\u001b[39m     \u001b[90m//Verify that home page is visible successfully\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 25 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(staticContents\u001b[33m.\u001b[39mhomePageTitle)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 26 |\u001b[39m     \u001b[90m//Click on 'Signup / Login' button\u001b[39m\n \u001b[90m 27 |\u001b[39m     headerNavigations\u001b[33m.\u001b[39mgotoLogin()\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[90m//Verify 'New User Signup!' is visible\u001b[39m\u001b[0m\n\u001b[2m    at /Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests/register_login.spec.js:25:24\u001b[22m"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-04-20T13:25:23.535Z",
-                      "attachments": [
-                        {
-                          "name": "screenshot",
-                          "contentType": "image/png",
-                          "path": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results/register_login-Login-Page-Tests-Test-Case-1-Register-User-chromium/test-failed-1.png"
-                        },
-                        {
-                          "name": "video",
-                          "contentType": "video/webm",
-                          "path": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results/register_login-Login-Page-Tests-Test-Case-1-Register-User-chromium/video.webm"
-                        },
-                        {
-                          "name": "_prompt-0",
-                          "contentType": "text/markdown",
-                          "body": "IyBJbnN0cnVjdGlvbnMKCi0gRm9sbG93aW5nIFBsYXl3cmlnaHQgdGVzdCBmYWlsZWQuCi0gRXhwbGFpbiB3aHksIGJlIGNvbmNpc2UsIHJlc3BlY3QgUGxheXdyaWdodCBiZXN0IHByYWN0aWNlcy4KLSBQcm92aWRlIGEgc25pcHBldCBvZiBjb2RlIHdpdGggdGhlIGZpeCwgaWYgcG9zc2libGUuCgojIFRlc3QgaW5mbwoKLSBOYW1lOiBMb2dpbiBQYWdlIFRlc3RzID4+IFRlc3QgQ2FzZSAxOiBSZWdpc3RlciBVc2VyCi0gTG9jYXRpb246IC9Vc2Vycy9uZXZpbGxlYWt3by9Qcm9qZWN0cy9UdXRvcmlhbC1wcm9qZWN0cy9wbGF5d3JpZ2h0L2F1dG9tYXRpb24tZXhlcmNpc2VzLXBsYXl3cmlnaHQvdGVzdHMvcmVnaXN0ZXJfbG9naW4uc3BlYy5qczoyMzo4CgojIEVycm9yIGRldGFpbHMKCmBgYApFcnJvcjogVGltZWQgb3V0IDUwMDBtcyB3YWl0aW5nIGZvciBleHBlY3QobG9jYXRvcikudG9IYXZlVGl0bGUoZXhwZWN0ZWQpCgpMb2NhdG9yOiBsb2NhdG9yKCc6cm9vdCcpCkV4cGVjdGVkIHN0cmluZzogIkF1dG9tYXRpb24gRXhlcmNpc2UiClJlY2VpdmVkIHN0cmluZzogIkF1dG9tYXRpb24gRXhlcmNpc2UgLSBTaWdudXAgLyBMb2dpbiIKQ2FsbCBsb2c6CiAgLSBleHBlY3QudG9IYXZlVGl0bGUgd2l0aCB0aW1lb3V0IDUwMDBtcwogIC0gd2FpdGluZyBmb3IgbG9jYXRvcignOnJvb3QnKQogICAgNyDDlyBsb2NhdG9yIHJlc29sdmVkIHRvIDxodG1sIGxhbmc9ImVuIj7igKY8L2h0bWw+CiAgICAgIC0gdW5leHBlY3RlZCB2YWx1ZSAiQXV0b21hdGlvbiBFeGVyY2lzZSAtIFNpZ251cCAvIExvZ2luIgoKICAgIGF0IC9Vc2Vycy9uZXZpbGxlYWt3by9Qcm9qZWN0cy9UdXRvcmlhbC1wcm9qZWN0cy9wbGF5d3JpZ2h0L2F1dG9tYXRpb24tZXhlcmNpc2VzLXBsYXl3cmlnaHQvdGVzdHMvcmVnaXN0ZXJfbG9naW4uc3BlYy5qczoyNToyNApgYGAKCiMgUGFnZSBzbmFwc2hvdAoKYGBgeWFtbAotIGJhbm5lcjoKICAtIGxpbmsgIldlYnNpdGUgZm9yIGF1dG9tYXRpb24gcHJhY3RpY2UiOgogICAgLSBpbWcgIldlYnNpdGUgZm9yIGF1dG9tYXRpb24gcHJhY3RpY2UiCiAgLSBsaXN0OgogICAgLSBsaXN0aXRlbToKICAgICAgLSBsaW5rICLvgJUgSG9tZSIKICAgIC0gbGlzdGl0ZW06CiAgICAgIC0gbGluayAi7qO4IFByb2R1Y3RzIgogICAgLSBsaXN0aXRlbToKICAgICAgLSBsaW5rICLvgbogQ2FydCIKICAgIC0gbGlzdGl0ZW06CiAgICAgIC0gbGluayAi74CjIFNpZ251cCAvIExvZ2luIgogICAgLSBsaXN0aXRlbToKICAgICAgLSBsaW5rICLvgLogVGVzdCBDYXNlcyIKICAgIC0gbGlzdGl0ZW06CiAgICAgIC0gbGluayAi74C6IEFQSSBUZXN0aW5nIgogICAgLSBsaXN0aXRlbToKICAgICAgLSBsaW5rICLvhaogVmlkZW8gVHV0b3JpYWxzIgogICAgLSBsaXN0aXRlbToKICAgICAgLSBsaW5rICLvg6AgQ29udGFjdCB1cyIKLSBoZWFkaW5nICJMb2dpbiB0byB5b3VyIGFjY291bnQiIFtsZXZlbD0yXQotIHRleHRib3ggIkVtYWlsIEFkZHJlc3MiCi0gdGV4dGJveCAiUGFzc3dvcmQiCi0gYnV0dG9uICJMb2dpbiIKLSBoZWFkaW5nICJPUiIgW2xldmVsPTJdCi0gaGVhZGluZyAiTmV3IFVzZXIgU2lnbnVwISIgW2xldmVsPTJdCi0gdGV4dGJveCAiTmFtZSIKLSB0ZXh0Ym94ICJFbWFpbCBBZGRyZXNzIgotIGJ1dHRvbiAiU2lnbnVwIgotIGNvbnRlbnRpbmZvOgogIC0gaGVhZGluZyAiU3Vic2NyaXB0aW9uIiBbbGV2ZWw9Ml0KICAtIHRleHRib3ggIllvdXIgZW1haWwgYWRkcmVzcyIKICAtIGJ1dHRvbiAi74aOIgogIC0gcGFyYWdyYXBoOiBHZXQgdGhlIG1vc3QgcmVjZW50IHVwZGF0ZXMgZnJvbSBvdXIgc2l0ZSBhbmQgYmUgdXBkYXRlZCB5b3VyIHNlbGYuLi4KICAtIGluc2VydGlvbgogIC0gcGFyYWdyYXBoOiBDb3B5cmlnaHQgwqkgMjAyMSBBbGwgcmlnaHRzIHJlc2VydmVkCmBgYAoKIyBUZXN0IHNvdXJjZQoKYGBgdHMKICAgMSB8IGltcG9ydCB7IHRlc3QsIGV4cGVjdCB9IGZyb20gIkBwbGF5d3JpZ2h0L3Rlc3QiOwogICAyIHwgaW1wb3J0IExvZ2luUGFnZSBmcm9tICIuLi9wYWdlcy9Mb2dpblBhZ2UiOwogICAzIHwgaW1wb3J0IHsgU2lnblVwUGFnZSB9IGZyb20gIi4uL3BhZ2VzL1NpZ25VcFBhZ2UiOwogICA0IHwgaW1wb3J0IHsgQWNjb3VudENyZWF0ZWRQYWdlIH0gZnJvbSAiLi4vcGFnZXMvQWNjb3VudENyZWF0ZWRQYWdlIjsKICAgNSB8IGltcG9ydCB7IEhlYWRlck5hdmlnYXRpb25zIH0gZnJvbSAiLi4vcGFnZXMvSGVhZGVyTmF2aWdhdGlvbnMiOwogICA2IHwgaW1wb3J0IHsKICAgNyB8ICAgdmFsaWRVc2VyLAogICA4IHwgICBpbnZhbGlkVXNlciwKICAgOSB8ICAgdXNlclByb2ZpbGUsCiAgMTAgfCAgIHN0YXRpY0NvbnRlbnRzLAogIDExIHwgfSBmcm9tICIuLi9kYXRhL3Rlc3RfZGF0YSI7CiAgMTIgfAogIDEzIHwgdGVzdC5kZXNjcmliZSgiTG9naW4gUGFnZSBUZXN0cyIsICgpID0+IHsKICAxNCB8ICAgbGV0IGxvZ2luUGFnZTsKICAxNSB8ICAgbGV0IGhlYWRlck5hdmlnYXRpb25zOwogIDE2IHwKICAxNyB8ICAgdGVzdC5iZWZvcmVFYWNoKGFzeW5jICh7IHBhZ2UgfSkgPT4gewogIDE4IHwgICAgIGxvZ2luUGFnZSA9IG5ldyBMb2dpblBhZ2UocGFnZSk7CiAgMTkgfCAgICAgaGVhZGVyTmF2aWdhdGlvbnMgPSBuZXcgSGVhZGVyTmF2aWdhdGlvbnMocGFnZSk7CiAgMjAgfCAgICAgYXdhaXQgbG9naW5QYWdlLmdvdG8oKTsKICAyMSB8ICAgfSk7CiAgMjIgfAogIDIzIHwgICB0ZXN0Lm9ubHkoIlRlc3QgQ2FzZSAxOiBSZWdpc3RlciBVc2VyIiwgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgMjQgfCAgICAgLy9WZXJpZnkgdGhhdCBob21lIHBhZ2UgaXMgdmlzaWJsZSBzdWNjZXNzZnVsbHkKPiAyNSB8ICAgICBhd2FpdCBleHBlY3QocGFnZSkudG9IYXZlVGl0bGUoc3RhdGljQ29udGVudHMuaG9tZVBhZ2VUaXRsZSk7CiAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgIF4gRXJyb3I6IFRpbWVkIG91dCA1MDAwbXMgd2FpdGluZyBmb3IgZXhwZWN0KGxvY2F0b3IpLnRvSGF2ZVRpdGxlKGV4cGVjdGVkKQogIDI2IHwgICAgIC8vQ2xpY2sgb24gJ1NpZ251cCAvIExvZ2luJyBidXR0b24KICAyNyB8ICAgICBoZWFkZXJOYXZpZ2F0aW9ucy5nb3RvTG9naW4oKTsKICAyOCB8ICAgICAvL1ZlcmlmeSAnTmV3IFVzZXIgU2lnbnVwIScgaXMgdmlzaWJsZQogIDI5IHwgICAgIGF3YWl0IGxvZ2luUGFnZS5hc3NlcnRTaWdudXBUaXRsZUlzVmlzaWJsZSgpOwogIDMwIHwgICAgIC8vRW50ZXIgbmFtZSBhbmQgZW1haWwgYWRkcmVzcwogIDMxIHwgICAgIGF3YWl0IGxvZ2luUGFnZS5zaWdudXAodXNlclByb2ZpbGUuZmlyc3ROYW1lLCB1c2VyUHJvZmlsZS5lbWFpbCk7CiAgMzIgfCAgICAgLy9DbGljayAnU2lnbnVwJyBidXR0b24KICAzMyB8ICAgICAvL1ZlcmlmeSB0aGF0ICdBY2NvdW50IENyZWF0ZWQhJyBpcyB2aXNpYmxlCiAgMzQgfAogIDM1IHwgICAgIGF3YWl0IGxvZ2luUGFnZS5hc3NlckxvZ2luVGl0bGVJc1Zpc2libGUoKTsKICAzNiB8ICAgICBhd2FpdCBsb2dpblBhZ2Uuc2lnbnVwKCJVMFg5S0BleGFtcGxlLmNvbSIsICJwYXNzd29yZCIpOwogIDM3IHwgICB9KTsKICAzOCB8CiAgMzkgfCAgIHRlc3QoIkxvZ2luIHdpdGggdmFsaWQgY3JlZGVudGlhbHMiLCBhc3luYyAoeyBwYWdlIH0pID0+IHsKICA0MCB8ICAgICBhd2FpdCBsb2dpblBhZ2UubG9naW4oIlUwWDlLQGV4YW1wbGUuY29tIiwgInBhc3N3b3JkIik7CiAgNDEgfCAgIH0pOwogIDQyIHwKICA0MyB8ICAgdGVzdCgiTG9naW4gd2l0aCBpbnZhbGlkIGNyZWRlbnRpYWxzIiwgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgNDQgfCAgICAgYXdhaXQgbG9naW5QYWdlLmxvZ2luKCJpbnZhbGlkLWVtYWlsIiwgImludmFsaWQtcGFzc3dvcmQiKTsKICA0NSB8ICAgfSk7CiAgNDYgfCB9KTsKICA0NyB8CmBgYA=="
-                        }
-                      ],
-                      "errorLocation": {
-                        "file": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/tests/register_login.spec.js",
-                        "column": 24,
-                        "line": 25
-                      }
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "27ec8054b3dea20b349b-5d2276c68ccd5fcc4aed",
-              "file": "register_login.spec.js",
-              "line": 23,
-              "column": 8
-            }
-          ]
-        }
-      ]
+      "message": "SyntaxError: The requested module '../pages/AccountCreatedPage' does not provide an export named 'AccountCreatedPage'",
+      "stack": "SyntaxError: The requested module '../pages/AccountCreatedPage' does not provide an export named 'AccountCreatedPage'"
+    },
+    {
+      "message": "Error: No tests found",
+      "stack": "Error: No tests found"
     }
   ],
-  "errors": [],
   "stats": {
-    "startTime": "2025-04-20T13:25:22.802Z",
-    "duration": 13583.842,
+    "startTime": "2025-04-20T13:42:01.142Z",
+    "duration": 35.41300000000001,
     "expected": 0,
     "skipped": 0,
-    "unexpected": 1,
+    "unexpected": 0,
     "flaky": 0
   }
 }
