@@ -20,14 +20,14 @@ export const userProfile = {
 };
 
 export const invalidUser = {
-  username: "wronguser@example.com",
+  email: "wronguser@example.com",
   password: "wrongPassword",
 };
 export const staticContents = {
   homePageTitle: "Automation Exercise",
   loginHeader: "Login to your account",
   signUpHeader: "New User Signup!",
-
+  loginErrorMessage: "Your email or password is incorrect!",
   accountCreatedPageHeader: "Account Created!",
   signUpAccountHeader: "Enter Account Information",
   accountDeletedPageHeader: "Account Deleted!",

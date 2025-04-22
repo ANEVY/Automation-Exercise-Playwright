@@ -4,7 +4,9 @@ export default class LoginPage {
     this.loginEmailAddress = page.locator('input[data-qa="login-email"]');
     this.loginPassword = page.locator('input[data-qa="login-password"]');
     this.loginButton = page.locator('button[data-qa="login-button"]');
-    this.errorMessage = page.locator('div[data-qa="error-message"]');
+    this.errorMessage = page.locator(
+      '//*[@id="form"]/div/div/div[1]/div/form/p'
+    );
     this.loginHeader = page.locator("div.login-form h2");
     this.signupHeader = page.locator("div.signup-form h2");
     this.signupEmailAddress = page.locator('input[data-qa="signup-email"]');
