@@ -89,7 +89,7 @@ test.describe("Login Page Tests", () => {
     );
   });
 
-  test.only("Test Case 4: Logout User", async ({ page }) => {
+  test("Test Case 4: Logout User", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Signup / Login' button
@@ -113,5 +113,26 @@ test.describe("Login Page Tests", () => {
 
     //logout user
     await headerNavigations.logout.click();
+  });
+
+  test.only("Test Case 5: Register User with existing email", async ({
+    page,
+  }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    //Click on 'Signup / Login' button
+    await headerNavigations.gotoLogin();
+    //Verify 'New User Signup!' is visible
+    let signupHeader = await loginPage.getSignupHeader();
+    await expect(signupHeader).toBeVisible();
+    await expect(signupHeader).toHaveText(staticContents.signUpHeader);
+    //register user
+    //Enter name and email address and click on sign up button
+    await loginPage.signup(userProfile.firstName, userProfile.email);
+
+    await expect(loginPage.signupErrorMessage).toBeVisible();
+    await expect(loginPage.signupErrorMessage).toHaveText(
+      staticContents.existingEmailErrorMessage
+    );
   });
 });

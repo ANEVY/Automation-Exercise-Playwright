@@ -109,7 +109,7 @@
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 4: Logout User",
+              "title": "Test Case 5: Register User with existing email",
               "ok": true,
               "tags": [],
               "tests": [
@@ -124,21 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 22657,
+                      "duration": 12643,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-04-22T22:10:03.908Z",
+                      "startTime": "2025-04-22T22:19:15.299Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-3dcaff695c860f710429",
+              "id": "27ec8054b3dea20b349b-83f8cc01fe14fa91d57a",
               "file": "register_login.spec.js",
-              "line": 92,
+              "line": 118,
               "column": 8
             }
           ]
@@ -148,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-04-22T22:10:03.149Z",
-    "duration": 24965.402000000002,
+    "startTime": "2025-04-22T22:19:14.510Z",
+    "duration": 14402.783000000001,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

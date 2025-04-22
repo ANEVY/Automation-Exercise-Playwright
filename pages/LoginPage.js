@@ -13,7 +13,7 @@ export default class LoginPage {
     this.signupName = page.locator('input[data-qa="signup-name"]');
     this.signupButton = page.locator('button[data-qa="signup-button"]');
     this.signupErrorMessage = page.locator(
-      'div[data-qa="signup-error-message"]'
+      '//*[@id="form"]/div/div/div[3]/div/form/p'
     );
   }
 

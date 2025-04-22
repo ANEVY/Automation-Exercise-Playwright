@@ -28,6 +28,7 @@ export const staticContents = {
   loginHeader: "Login to your account",
   signUpHeader: "New User Signup!",
   loginErrorMessage: "Your email or password is incorrect!",
+  existingEmailErrorMessage: "Email Address already exist!",
   accountCreatedPageHeader: "Account Created!",
   signUpAccountHeader: "Enter Account Information",
   accountDeletedPageHeader: "Account Deleted!",
