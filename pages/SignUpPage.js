@@ -51,10 +51,8 @@ export default class SignUpPage {
     } else {
       await this.mrTitle.check();
     }
-    // await this.mrTitle.click();
     await this.firstName.fill(firstName);
     await this.lastName.fill(lastName);
-    // await this.email.fill(email);
     await this.password.fill(password);
     await this.birthDay.selectOption(day);
     await this.birthMonth.selectOption(month);

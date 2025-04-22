@@ -4,6 +4,7 @@ import SignUpPage from "../pages/SignUpPage";
 import AccountCreatedPage from "../pages/AccountCreatedPage";
 import HeaderNavigations from "../pages/HeaderNavigations";
 import AcccountDeletedPage from "../pages/AccountDeletedPage";
+import Helpers from "../utils/Helpers";
 import { invalidUser, userProfile, staticContents } from "../data/test_data";
 
 test.describe("Login Page Tests", () => {
@@ -24,7 +25,7 @@ test.describe("Login Page Tests", () => {
     await headerNavigations.openHomePage();
   });
 
-  test.only("Test Case 1: Register User", async ({ page }) => {
+  test("Test Case 1: Register User", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Signup / Login' button
@@ -33,63 +34,43 @@ test.describe("Login Page Tests", () => {
     let signupHeader = await loginPage.getSignupHeader();
     await expect(signupHeader).toBeVisible();
     await expect(signupHeader).toHaveText(staticContents.signUpHeader);
-    //Enter name and email address and click on sign up button
-    await loginPage.signup(userProfile.firstName, userProfile.email);
-
-    await expect(page).toHaveTitle(staticContents.signUpPageTitle);
-
-    //Verify 'Enter Account Information' is visible
-    let signUpAccountHeader = await signUpPage.getAccountHeader();
-    await expect(signUpAccountHeader).toBeVisible();
-    await expect(signUpAccountHeader).toHaveText(
-      staticContents.signUpAccountHeader
+    //Register user
+    await Helpers.registerUser(
+      page,
+      headerNavigations,
+      loginPage,
+      signUpPage,
+      accountCreatedPage
     );
-    // create account
-    await signUpPage.createAccount(
-      userProfile.title ?? "Mr",
-      userProfile.firstName,
-      userProfile.lastName,
-      userProfile.password,
-      userProfile.dateOfBirth.day,
-      userProfile.dateOfBirth.month,
-      userProfile.dateOfBirth.year,
-      userProfile.company,
-      userProfile.address,
-      userProfile.address2,
-      userProfile.city,
-      userProfile.state,
-      userProfile.zipCode,
-      userProfile.phoneNumber,
-      userProfile.country,
-      true,
-      true
+    //delete user
+    await Helpers.deleteUserAccount(headerNavigations, accountDeletedPage);
+  });
+
+  test.only("Test Case 2: Login User with correct email and password", async ({
+    page,
+  }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    //Click on 'Signup / Login' button
+    Helpers.verifyLoginHeader(headerNavigations, loginPage);
+    //register user
+    await Helpers.registerUser(
+      page,
+      headerNavigations,
+      loginPage,
+      signUpPage,
+      accountCreatedPage
     );
-    //Verify that 'ACCOUNT CREATED!' is visible
-    let accountCreatedHeader = await accountCreatedPage.getAccountHeader();
-    await expect(accountCreatedHeader).toBeVisible();
-    await expect(accountCreatedHeader).toHaveText(
-      staticContents.accountCreatedPageHeader
-    );
+    //logout user
+    await headerNavigations.logout.click();
 
-    //Click 'Continue' button
-    await accountCreatedPage.clickContinueButton();
+    //Click on 'Signup / Login' button
+    await Helpers.verifyLoginHeader(headerNavigations, loginPage);
 
-    //Verify that 'Logged in as username' is visible
-    let loggedInUser = await headerNavigations.getLoggedInUser();
-    await expect(loggedInUser).toBeVisible();
-    await expect(loggedInUser).toContainText(userProfile.firstName);
+    //Login with valid credentials
+    await loginPage.login(userProfile.email, userProfile.password);
 
-    //Click 'Delete Account' button
-    await headerNavigations.deleteAccount.click();
-
-    //Verify that 'ACCOUNT DELETED!' is visible
-    let accountDeletedHeader = await accountDeletedPage.getAccountHeader();
-    await expect(accountDeletedHeader).toBeVisible();
-    await expect(accountDeletedHeader).toHaveText(
-      staticContents.accountDeletedPageHeader
-    );
-
-    //Click 'Continue' button
-    await accountDeletedPage.clickContinueButton();
+    //delete user
+    await Helpers.deleteUserAccount(headerNavigations, accountDeletedPage);
   });
 });

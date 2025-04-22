@@ -105,11 +105,11 @@
         {
           "title": "Login Page Tests",
           "file": "register_login.spec.js",
-          "line": 9,
+          "line": 10,
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 1: Register User",
+              "title": "Test Case 2: Login User with correct email and password",
               "ok": true,
               "tags": [],
               "tests": [
@@ -124,21 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 19377,
+                      "duration": 29494,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-04-20T20:15:22.673Z",
+                      "startTime": "2025-04-22T21:47:23.924Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-5d2276c68ccd5fcc4aed",
+              "id": "27ec8054b3dea20b349b-38b7cca462326af3e2a6",
               "file": "register_login.spec.js",
-              "line": 27,
+              "line": 49,
               "column": 8
             }
           ]
@@ -148,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-04-20T20:15:21.750Z",
-    "duration": 21340.905000000002,
+    "startTime": "2025-04-22T21:47:23.167Z",
+    "duration": 31232.351,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,
