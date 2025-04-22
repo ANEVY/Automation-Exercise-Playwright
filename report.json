@@ -109,7 +109,7 @@
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 3: Login User with incorrect email and password",
+              "title": "Test Case 4: Logout User",
               "ok": true,
               "tags": [],
               "tests": [
@@ -124,21 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 13239,
+                      "duration": 22657,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-04-22T22:03:30.090Z",
+                      "startTime": "2025-04-22T22:10:03.908Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-627436b7fe02d1f023e6",
+              "id": "27ec8054b3dea20b349b-3dcaff695c860f710429",
               "file": "register_login.spec.js",
-              "line": 76,
+              "line": 92,
               "column": 8
             }
           ]
@@ -148,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-04-22T22:03:29.150Z",
-    "duration": 15123.789,
+    "startTime": "2025-04-22T22:10:03.149Z",
+    "duration": 24965.402000000002,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

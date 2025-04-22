@@ -73,7 +73,7 @@ test.describe("Login Page Tests", () => {
     //delete user
     await Helpers.deleteUserAccount(headerNavigations, accountDeletedPage);
   });
-  test.only("Test Case 3: Login User with incorrect email and password", async ({
+  test("Test Case 3: Login User with incorrect email and password", async ({
     page,
   }) => {
     //Verify that home page is visible successfully
@@ -87,5 +87,31 @@ test.describe("Login Page Tests", () => {
     await expect(loginPage.errorMessage).toHaveText(
       staticContents.loginErrorMessage
     );
+  });
+
+  test.only("Test Case 4: Logout User", async ({ page }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    //Click on 'Signup / Login' button
+    Helpers.verifyLoginHeader(headerNavigations, loginPage);
+    //register user
+    await Helpers.registerUser(
+      page,
+      headerNavigations,
+      loginPage,
+      signUpPage,
+      accountCreatedPage
+    );
+    //logout user
+    await headerNavigations.logout.click();
+
+    //Click on 'Signup / Login' button
+    await Helpers.verifyLoginHeader(headerNavigations, loginPage);
+
+    //Login with valid credentials
+    await loginPage.login(userProfile.email, userProfile.password);
+
+    //logout user
+    await headerNavigations.logout.click();
   });
 });
