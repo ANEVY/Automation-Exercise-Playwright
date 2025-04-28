@@ -33,4 +33,22 @@ export const staticContents = {
   signUpAccountHeader: "Enter Account Information",
   accountDeletedPageHeader: "Account Deleted!",
   signUpPageTitle: "Automation Exercise - Signup",
+  contactPage: {
+    getIntouch: "Get In Touch",
+    successAlert: "Success! Your details have been submitted successfully.",
+  },
+};
+
+export const assetsPaths = {
+  images: {
+    farmerSpraying: "assets/images/farmer-spraying.jpeg",
+    farmerRidges: "assets/images/farmers making ridges.jpeg",
+  },
+};
+
+export const contactForm = {
+  name: "Gideo Ataku",
+  message: "For God so love the world",
+  email: "agbor1cpeter@gmail.com",
+  subject: "Testing contact on Automation exercise",
 };

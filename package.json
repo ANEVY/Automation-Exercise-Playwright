@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx playwright test",
     "test-on-chrome": "npx playwright test --project=chromium --headed",
-    "test-on-firefox": "npx playwright test --project=firefox",
+    "test-on-firefox": "npx playwright test --project=firefox --headed",
     "test-on-webkit": "npx playwright test --project=webkit",
     "test-on-chrome-debug": "npx playwright test --project=chromium --debug",
     "headed-mode": "npx playwright test --headed",

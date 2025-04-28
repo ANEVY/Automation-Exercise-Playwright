@@ -5,9 +5,16 @@ import AccountCreatedPage from "../pages/AccountCreatedPage";
 import HeaderNavigations from "../pages/HeaderNavigations";
 import AcccountDeletedPage from "../pages/AccountDeletedPage";
 import Helpers from "../utils/Helpers";
-import { invalidUser, userProfile, staticContents } from "../data/test_data";
+import ContactUsPage from "../pages/ContactUsPage";
+import {
+  invalidUser,
+  userProfile,
+  staticContents,
+  contactForm,
+} from "../data/test_data";
 
-test.describe("Login Page Tests", () => {
+//Registration
+test.describe("Automation exercise test cases", () => {
   let loginPage;
   let headerNavigations;
   let signUpPage;
@@ -115,9 +122,7 @@ test.describe("Login Page Tests", () => {
     await headerNavigations.logout.click();
   });
 
-  test.only("Test Case 5: Register User with existing email", async ({
-    page,
-  }) => {
+  test("Test Case 5: Register User with existing email", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Signup / Login' button
@@ -134,5 +139,56 @@ test.describe("Login Page Tests", () => {
     await expect(loginPage.signupErrorMessage).toHaveText(
       staticContents.existingEmailErrorMessage
     );
+  });
+});
+
+//Contact page
+test.describe("Contact Us Tests", () => {
+  let loginPage;
+  let headerNavigations;
+  let signUpPage;
+  let accountCreatedPage;
+  let accountDeletedPage;
+  let contactUsPage;
+
+  test.beforeEach(async ({ page }) => {
+    loginPage = new LoginPage(page);
+    headerNavigations = new HeaderNavigations(page);
+    signUpPage = new SignUpPage(page);
+    accountCreatedPage = new AccountCreatedPage(page);
+    accountDeletedPage = new AcccountDeletedPage(page);
+    contactUsPage = new ContactUsPage(page);
+
+    //Navigate to home page
+    await headerNavigations.openHomePage();
+  });
+
+  test.only("Test Case 6: Contact Us Form", async ({ page }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    await headerNavigations.contactPage.click();
+
+    //Verify 'GET IN TOUCH' is visible
+    await expect(contactUsPage.getIntouch).toBeVisible();
+    await expect(contactUsPage.getIntouch).toHaveText(
+      staticContents.contactPage.getIntouch
+    );
+
+    //6Enter name, email, subject and message
+    await contactUsPage.contactUs(
+      contactForm.name,
+      contactForm.email,
+      contactForm.subject,
+      contactForm.message
+    );
+    //Verify success message
+    await expect(contactUsPage.successAlert).toBeVisible();
+    await expect(contactUsPage.successAlert).toHaveText(
+      staticContents.contactPage.successAlert
+    );
+    // navigate to the home page
+    await headerNavigations.gotoHome();
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
   });
 });
