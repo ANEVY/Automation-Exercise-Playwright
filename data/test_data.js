@@ -33,6 +33,7 @@ export const staticContents = {
   signUpAccountHeader: "Enter Account Information",
   accountDeletedPageHeader: "Account Deleted!",
   signUpPageTitle: "Automation Exercise - Signup",
+  testCasesPageTitle: "Automation Practice Website for UI Testing - Test Cases",
   contactPage: {
     getIntouch: "Get In Touch",
     successAlert: "Success! Your details have been submitted successfully.",

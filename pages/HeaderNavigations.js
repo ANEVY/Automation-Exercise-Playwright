@@ -3,20 +3,20 @@ export default class HeaderNavigations {
     this.page = page;
     this.homePage = page.locator('ul.nav a[href="/"]');
     // this.logoImage = page.locator('ul.nav a[href="/"]');
-    this.loginPage = page.locator('a[href="/login"]');
-    this.signUpPage = page.locator('a[href="/signup"]');
-    this.accountPage = page.locator('a[href="/account"]');
-    this.cartPage = page.locator('a[href="/view_cart"]');
-    this.apiTestingPage = page.locator('a[href="/api_list"]');
+    this.loginPage = page.locator('.nav a[href="/login"]');
+    this.signUpPage = page.locator('.nav a[href="/signup"]');
+    this.accountPage = page.locator('.nav a[href="/account"]');
+    this.cartPage = page.locator('.nav a[href="/view_cart"]');
+    this.apiTestingPage = page.locator('.nav a[href="/api_list"]');
     this.videTutorialPage = page.locator(
       'a[href="https://www.youtube.com/c/AutomationExercise"]'
     );
-    this.contactPage = page.locator('a[href="/contact_us"]');
-    this.testCasesPage = page.locator('a[href="/test_cases"]');
-    this.blogPage = page.locator('a[href="/blog"]');
-    this.productsPage = page.locator('a[href="/products"]');
-    this.logout = page.locator('a[href="/logout"]');
-    this.deleteAccount = page.locator('a[href="/delete_account"]');
+    this.contactPage = page.locator('.nav a[href="/contact_us"]');
+    this.testCasesPage = page.locator('.nav a[href="/test_cases"]');
+    this.blogPage = page.locator('.nav a[href="/blog"]');
+    this.productsPage = page.locator('.nav a[href="/products"]');
+    this.logout = page.locator('.nav a[href="/logout"]');
+    this.deleteAccount = page.locator('.nav a[href="/delete_account"]');
     this.loggedInUser = page.locator(
       "#header ul.nav.navbar-nav > li:nth-child(10) > a"
     );

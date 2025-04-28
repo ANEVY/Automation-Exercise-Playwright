@@ -109,7 +109,7 @@
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 6: Contact Us Form",
+              "title": "Test Case 7: Verify Test Cases Page",
               "ok": true,
               "tags": [],
               "tests": [
@@ -124,25 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 16601,
+                      "duration": 15784,
                       "errors": [],
-                      "stdout": [
-                        {
-                          "text": "Dialog says: Press OK to proceed!\n"
-                        }
-                      ],
+                      "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-04-28T00:55:04.727Z",
+                      "startTime": "2025-04-28T20:11:45.869Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-1b73aaaecfd9cf6d01aa",
+              "id": "27ec8054b3dea20b349b-7203da54d55eb109d3b1",
               "file": "register_login.spec.js",
-              "line": 166,
+              "line": 194,
               "column": 8
             }
           ]
@@ -152,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-04-28T00:55:03.697Z",
-    "duration": 19325.953,
+    "startTime": "2025-04-28T20:11:45.002Z",
+    "duration": 18438.907,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

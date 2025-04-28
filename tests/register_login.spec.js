@@ -163,7 +163,7 @@ test.describe("Contact Us Tests", () => {
     await headerNavigations.openHomePage();
   });
 
-  test.only("Test Case 6: Contact Us Form", async ({ page }) => {
+  test("Test Case 6: Contact Us Form", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     await headerNavigations.contactPage.click();
@@ -190,5 +190,13 @@ test.describe("Contact Us Tests", () => {
     await headerNavigations.gotoHome();
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
+  });
+  test.only("Test Case 7: Verify Test Cases Page", async ({ page }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    // Click on 'Test Cases' button
+    await headerNavigations.gotoTestCases();
+    //Verify user is navigated to test cases page successfully
+    await expect(page).toHaveTitle(staticContents.testCasesPageTitle);
   });
 });
