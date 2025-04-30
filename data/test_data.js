@@ -38,6 +38,10 @@ export const staticContents = {
     getIntouch: "Get In Touch",
     successAlert: "Success! Your details have been submitted successfully.",
   },
+  productsPage: {
+    pageTitle: "Automation Exercise - All Products",
+    totalProductCards: 34,
+  },
 };
 
 export const assetsPaths = {

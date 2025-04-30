@@ -105,11 +105,11 @@
         {
           "title": "Contact Us Tests",
           "file": "register_login.spec.js",
-          "line": 146,
+          "line": 147,
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 7: Verify Test Cases Page",
+              "title": "Test Case 8: Verify All Products and product detail page",
               "ok": true,
               "tags": [],
               "tests": [
@@ -124,21 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 15784,
+                      "duration": 17927,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-04-28T20:11:45.869Z",
+                      "startTime": "2025-04-30T03:05:16.132Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-7203da54d55eb109d3b1",
+              "id": "27ec8054b3dea20b349b-9332242755bc3282e876",
               "file": "register_login.spec.js",
-              "line": 194,
+              "line": 205,
               "column": 8
             }
           ]
@@ -148,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-04-28T20:11:45.002Z",
-    "duration": 18438.907,
+    "startTime": "2025-04-30T03:05:15.321Z",
+    "duration": 20475.022,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

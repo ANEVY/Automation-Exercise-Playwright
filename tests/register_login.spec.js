@@ -6,6 +6,7 @@ import HeaderNavigations from "../pages/HeaderNavigations";
 import AcccountDeletedPage from "../pages/AccountDeletedPage";
 import Helpers from "../utils/Helpers";
 import ContactUsPage from "../pages/ContactUsPage";
+import ProductsPage from "../pages/ProductsPage";
 import {
   invalidUser,
   userProfile,
@@ -150,6 +151,7 @@ test.describe("Contact Us Tests", () => {
   let accountCreatedPage;
   let accountDeletedPage;
   let contactUsPage;
+  let productsPage;
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
@@ -158,6 +160,7 @@ test.describe("Contact Us Tests", () => {
     accountCreatedPage = new AccountCreatedPage(page);
     accountDeletedPage = new AcccountDeletedPage(page);
     contactUsPage = new ContactUsPage(page);
+    productsPage = new ProductsPage(page);
 
     //Navigate to home page
     await headerNavigations.openHomePage();
@@ -191,12 +194,41 @@ test.describe("Contact Us Tests", () => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
   });
-  test.only("Test Case 7: Verify Test Cases Page", async ({ page }) => {
+  test("Test Case 7: Verify Test Cases Page", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     // Click on 'Test Cases' button
     await headerNavigations.gotoTestCases();
     //Verify user is navigated to test cases page successfully
     await expect(page).toHaveTitle(staticContents.testCasesPageTitle);
+  });
+  test.only("Test Case 8: Verify All Products and product detail page", async ({
+    page,
+  }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    //Click on 'Products' button
+    await headerNavigations.gotoProducts();
+    //5. Verify user is navigated to ALL PRODUCTS page successfully
+    // await page.waitForTimeout(12000); // Sleep for 2 seconds
+    await expect(page).toHaveTitle(staticContents.productsPage.pageTitle);
+    //verify that all cards are visible
+    await expect(productsPage.productCards).toHaveCount(
+      staticContents.productsPage.totalProductCards
+    );
+    //Click on 'View Product' of first product
+    let productCards = await productsPage.productCards.all();
+    await productCards[0].locator("ul.nav li a").click();
+
+    // Sleep for 2 seconds
+    await page.waitForTimeout(2000);
+
+    // Verify that detail detail is visible: product name, category, price, availability, condition, brand
+    await expect(productsPage.productName).toBeVisible();
+    await expect(productsPage.productCategory).toBeVisible();
+    await expect(productsPage.productPrice).toBeVisible();
+    await expect(productsPage.productCondition).toBeVisible();
+    await expect(productsPage.productAvailability).toBeVisible();
+    await expect(productsPage.productBrand).toBeVisible();
   });
 });
