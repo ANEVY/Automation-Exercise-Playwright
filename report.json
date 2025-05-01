@@ -109,7 +109,7 @@
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 10: Verify Subscription in home page",
+              "title": "Test Case 11: Verify Subscription in Cart page",
               "ok": true,
               "tags": [],
               "tests": [
@@ -124,21 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 29776,
+                      "duration": 13582,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-05-01T19:12:16.664Z",
+                      "startTime": "2025-05-01T19:16:31.128Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-497484bbecd4b2fe76cd",
+              "id": "27ec8054b3dea20b349b-3662074ec8fde7395627",
               "file": "register_login.spec.js",
-              "line": 250,
+              "line": 267,
               "column": 8
             }
           ]
@@ -148,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-05-01T19:12:15.781Z",
-    "duration": 32837.132000000005,
+    "startTime": "2025-05-01T19:16:30.083Z",
+    "duration": 16536.146,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

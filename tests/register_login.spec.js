@@ -247,11 +247,30 @@ test.describe("Contact Us Tests", () => {
       staticContents.productsPage.totalSearchResult
     );
   });
-  test.only("Test Case 10: Verify Subscription in home page", async ({
+  test("Test Case 10: Verify Subscription in home page", async ({ page }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    // Scroll down to footer
+    await headerAndFooter.footer.scrollIntoViewIfNeeded();
+    //Verify text 'SUBSCRIPTION'
+    await expect(headerAndFooter.subscriptionHeader).toBeVisible();
+    await expect(headerAndFooter.subscriptionHeader).toHaveText(
+      staticContents.subscriptionTitle
+    );
+    //Enter email address in input and click arrow button
+    await headerAndFooter.subscriptionEmail.fill(userProfile.email);
+    await headerAndFooter.subscriptionButton.click();
+
+    //. Verify success message 'You have been successfully subscribed!' is visible
+    await expect(headerAndFooter.subscriptionButton).toBeVisible();
+  });
+  test.only("Test Case 11: Verify Subscription in Cart page", async ({
     page,
   }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
+    // Click 'Cart' button
+    await headerAndFooter.gotoCart();
     // Scroll down to footer
     await headerAndFooter.footer.scrollIntoViewIfNeeded();
     //Verify text 'SUBSCRIPTION'
