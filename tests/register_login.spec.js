@@ -244,21 +244,10 @@ test.describe("Contact Us Tests", () => {
     );
     await productsPage.submitSearch.click();
 
-    //Click on 'View Product' of first product
-    let productCards = await productsPage.productCards.all();
-    for (const productCard of productCards) {
-      let titleLocator = await productCard.locator(".productinfo h2");
-      let titleText = await titleLocator.textContent();
+    await expect(productsPage.searchedProducts).toBeVisible();
 
-      if (
-        titleText &&
-        titleText.toLocaleLowerCase() ==
-          staticContents.productsPage.productName.toLocaleLowerCase()
-      ) {
-        await expect(titleLocator).toBeVisible();
-        break;
-      }
-    }
-    await productCards[0].locator("ul.nav li a").click();
+    await expect(productsPage.productCards).toHaveCount(
+      staticContents.productsPage.totalSearchResult
+    );
   });
 });

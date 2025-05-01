@@ -4,12 +4,9 @@ export default class ProductsPage {
     this.advertismentImage = page.locator("#advertisement img");
     this.searchProducts = page.locator("#search_product");
     this.submitSearch = page.locator("#submit_search");
-    this.allProducts = page.locator(
-      "/html/body/section[2]/div/div/div[2]/div/h2"
-    );
-    this.categoryHeader = page.locator(
-      "/html/body/section[2]/div/div/div[1]/div/h2"
-    );
+    this.allProducts = page.locator("//section[2]/div/div/div[2]/div/h2");
+    this.searchedProducts = page.locator("//section[2]/div/div/div[2]/div/h2");
+    this.categoryHeader = page.locator("//section[2]/div/div/div[1]/div/h2");
     this.productCards = page.locator(
       ".features_items div.product-image-wrapper"
     );
