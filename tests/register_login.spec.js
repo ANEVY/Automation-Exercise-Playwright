@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import AccountCreatedPage from "../pages/AccountCreatedPage";
-import HeaderNavigations from "../pages/HeaderNavigations";
+import HeaderAndFooter from "../pages/HeaderAndFooter";
 import AcccountDeletedPage from "../pages/AccountDeletedPage";
 import Helpers from "../utils/Helpers";
 import ContactUsPage from "../pages/ContactUsPage";
@@ -24,7 +24,7 @@ test.describe("Automation exercise test cases", () => {
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
-    headerNavigations = new HeaderNavigations(page);
+    headerNavigations = new HeaderAndFooter(page);
     signUpPage = new SignUpPage(page);
     accountCreatedPage = new AccountCreatedPage(page);
     accountDeletedPage = new AcccountDeletedPage(page);
@@ -146,7 +146,7 @@ test.describe("Automation exercise test cases", () => {
 //Contact page
 test.describe("Contact Us Tests", () => {
   let loginPage;
-  let headerNavigations;
+  let headerAndFooter;
   let signUpPage;
   let accountCreatedPage;
   let accountDeletedPage;
@@ -155,21 +155,19 @@ test.describe("Contact Us Tests", () => {
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
-    headerNavigations = new HeaderNavigations(page);
+    headerAndFooter = new HeaderAndFooter(page);
     signUpPage = new SignUpPage(page);
     accountCreatedPage = new AccountCreatedPage(page);
     accountDeletedPage = new AcccountDeletedPage(page);
     contactUsPage = new ContactUsPage(page);
     productsPage = new ProductsPage(page);
-
     //Navigate to home page
-    await headerNavigations.openHomePage();
+    await headerAndFooter.openHomePage();
   });
-
   test("Test Case 6: Contact Us Form", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
-    await headerNavigations.contactPage.click();
+    await headerAndFooter.contactPage.click();
 
     //Verify 'GET IN TOUCH' is visible
     await expect(contactUsPage.getIntouch).toBeVisible();
@@ -190,7 +188,7 @@ test.describe("Contact Us Tests", () => {
       staticContents.contactPage.successAlert
     );
     // navigate to the home page
-    await headerNavigations.gotoHome();
+    await headerAndFooter.gotoHome();
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
   });
@@ -198,7 +196,7 @@ test.describe("Contact Us Tests", () => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     // Click on 'Test Cases' button
-    await headerNavigations.gotoTestCases();
+    await headerAndFooter.gotoTestCases();
     //Verify user is navigated to test cases page successfully
     await expect(page).toHaveTitle(staticContents.testCasesPageTitle);
   });
@@ -208,7 +206,7 @@ test.describe("Contact Us Tests", () => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Products' button
-    await headerNavigations.gotoProducts();
+    await headerAndFooter.gotoProducts();
     //5. Verify user is navigated to ALL PRODUCTS page successfully
     await expect(page).toHaveTitle(staticContents.productsPage.pageTitle);
     //verify that all cards are visible
@@ -230,12 +228,11 @@ test.describe("Contact Us Tests", () => {
     await expect(productsPage.productAvailability).toBeVisible();
     await expect(productsPage.productBrand).toBeVisible();
   });
-
-  test.only("Test Case 9: Search Product", async ({ page }) => {
+  test("Test Case 9: Search Product", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Products' button
-    await headerNavigations.gotoProducts();
+    await headerAndFooter.gotoProducts();
     //5. Verify user is navigated to ALL PRODUCTS page successfully
     await expect(page).toHaveTitle(staticContents.productsPage.pageTitle);
     //Enter product name in search input and click search button
@@ -249,5 +246,11 @@ test.describe("Contact Us Tests", () => {
     await expect(productsPage.productCards).toHaveCount(
       staticContents.productsPage.totalSearchResult
     );
+  });
+  test.only("Test Case 10: Verify Subscription in home page", async ({
+    page,
+  }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
   });
 });
