@@ -52,7 +52,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 30000
+        "timeout": 60000
       },
       {
         "outputDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results",
@@ -68,7 +68,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 30000
+        "timeout": 60000
       },
       {
         "outputDir": "/Users/nevilleakwo/Projects/Tutorial-projects/playwright/automation-exercises-playwright/test-results",
@@ -84,7 +84,7 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 30000
+        "timeout": 60000
       }
     ],
     "shard": null,
@@ -109,12 +109,12 @@
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 9: Search Product",
+              "title": "Test Case 10: Verify Subscription in home page",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 30000,
+                  "timeout": 60000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "firefox",
@@ -124,21 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 14307,
+                      "duration": 29776,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-05-01T11:57:37.308Z",
+                      "startTime": "2025-05-01T19:12:16.664Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-92db760a165d1fb12481",
+              "id": "27ec8054b3dea20b349b-497484bbecd4b2fe76cd",
               "file": "register_login.spec.js",
-              "line": 234,
+              "line": 250,
               "column": 8
             }
           ]
@@ -148,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-05-01T11:57:36.469Z",
-    "duration": 17074.734999999997,
+    "startTime": "2025-05-01T19:12:15.781Z",
+    "duration": 32837.132000000005,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

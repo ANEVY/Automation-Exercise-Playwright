@@ -28,8 +28,10 @@ export default class HeaderAndFooter {
     this.subscriptionDesc = page.locator(
       '//*[@id="footer"]/div[1]/div/div/div[2]/div/form/p'
     );
+    this.subscriptionMessage = page.locator("#success-subscribe");
     this.copyrightText = page.locator('//*[@id="footer"]/div[2]/div/div/p');
     this.scrollUp = page.locator("#scrollUp");
+    this.footer = page.locator("#footer");
   }
 
   async openHomePage() {

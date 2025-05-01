@@ -34,6 +34,9 @@ export const staticContents = {
   accountDeletedPageHeader: "Account Deleted!",
   signUpPageTitle: "Automation Exercise - Signup",
   testCasesPageTitle: "Automation Practice Website for UI Testing - Test Cases",
+  subscriptionTitle: "Subscription",
+  subscriptionDesc:
+    "Get the most recent updates from our site and be updated your self...",
   contactPage: {
     getIntouch: "Get In Touch",
     successAlert: "Success! Your details have been submitted successfully.",

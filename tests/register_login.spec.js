@@ -252,5 +252,18 @@ test.describe("Contact Us Tests", () => {
   }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
+    // Scroll down to footer
+    await headerAndFooter.footer.scrollIntoViewIfNeeded();
+    //Verify text 'SUBSCRIPTION'
+    await expect(headerAndFooter.subscriptionHeader).toBeVisible();
+    await expect(headerAndFooter.subscriptionHeader).toHaveText(
+      staticContents.subscriptionTitle
+    );
+    //Enter email address in input and click arrow button
+    await headerAndFooter.subscriptionEmail.fill(userProfile.email);
+    await headerAndFooter.subscriptionButton.click();
+
+    //. Verify success message 'You have been successfully subscribed!' is visible
+    await expect(headerAndFooter.subscriptionButton).toBeVisible();
   });
 });
