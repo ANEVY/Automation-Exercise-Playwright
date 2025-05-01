@@ -109,7 +109,7 @@
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 8: Verify All Products and product detail page",
+              "title": "Test Case 9: Search Product",
               "ok": true,
               "tags": [],
               "tests": [
@@ -124,21 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 17927,
+                      "duration": 16918,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-04-30T03:05:16.132Z",
+                      "startTime": "2025-05-01T08:08:01.797Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-9332242755bc3282e876",
+              "id": "27ec8054b3dea20b349b-92db760a165d1fb12481",
               "file": "register_login.spec.js",
-              "line": 205,
+              "line": 234,
               "column": 8
             }
           ]
@@ -148,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-04-30T03:05:15.321Z",
-    "duration": 20475.022,
+    "startTime": "2025-05-01T08:08:01.008Z",
+    "duration": 19495.533,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,

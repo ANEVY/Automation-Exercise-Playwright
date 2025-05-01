@@ -202,7 +202,7 @@ test.describe("Contact Us Tests", () => {
     //Verify user is navigated to test cases page successfully
     await expect(page).toHaveTitle(staticContents.testCasesPageTitle);
   });
-  test.only("Test Case 8: Verify All Products and product detail page", async ({
+  test("Test Case 8: Verify All Products and product detail page", async ({
     page,
   }) => {
     //Verify that home page is visible successfully
@@ -210,7 +210,6 @@ test.describe("Contact Us Tests", () => {
     //Click on 'Products' button
     await headerNavigations.gotoProducts();
     //5. Verify user is navigated to ALL PRODUCTS page successfully
-    // await page.waitForTimeout(12000); // Sleep for 2 seconds
     await expect(page).toHaveTitle(staticContents.productsPage.pageTitle);
     //verify that all cards are visible
     await expect(productsPage.productCards).toHaveCount(
@@ -230,5 +229,36 @@ test.describe("Contact Us Tests", () => {
     await expect(productsPage.productCondition).toBeVisible();
     await expect(productsPage.productAvailability).toBeVisible();
     await expect(productsPage.productBrand).toBeVisible();
+  });
+
+  test.only("Test Case 9: Search Product", async ({ page }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    //Click on 'Products' button
+    await headerNavigations.gotoProducts();
+    //5. Verify user is navigated to ALL PRODUCTS page successfully
+    await expect(page).toHaveTitle(staticContents.productsPage.pageTitle);
+    //Enter product name in search input and click search button
+    await productsPage.searchProducts.fill(
+      staticContents.productsPage.productName
+    );
+    await productsPage.submitSearch.click();
+
+    //Click on 'View Product' of first product
+    let productCards = await productsPage.productCards.all();
+    for (const productCard of productCards) {
+      let titleLocator = await productCard.locator(".productinfo h2");
+      let titleText = await titleLocator.textContent();
+
+      if (
+        titleText &&
+        titleText.toLocaleLowerCase() ==
+          staticContents.productsPage.productName.toLocaleLowerCase()
+      ) {
+        await expect(titleLocator).toBeVisible();
+        break;
+      }
+    }
+    await productCards[0].locator("ul.nav li a").click();
   });
 });

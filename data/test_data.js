@@ -41,6 +41,7 @@ export const staticContents = {
   productsPage: {
     pageTitle: "Automation Exercise - All Products",
     totalProductCards: 34,
+    productName: "Blue Top",
   },
 };
 
