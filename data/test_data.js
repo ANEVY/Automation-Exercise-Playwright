@@ -46,6 +46,20 @@ export const staticContents = {
     totalProductCards: 34,
     productName: "Blue",
     totalSearchResult: 7,
+    products: {
+      product1: {
+        name: "Blue Top",
+        cartQuantity: "1",
+        cartPrice: "Rs. 500",
+        price: "Rs. 500",
+      },
+      product2: {
+        name: "Men Tshirt",
+        cartQuantity: "1",
+        cartPrice: "Rs. 400",
+        price: "Rs. 400",
+      },
+    },
   },
 };
 

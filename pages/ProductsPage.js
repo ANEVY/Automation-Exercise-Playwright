@@ -28,5 +28,18 @@ export default class ProductsPage {
     this.productBrand = page.locator(
       "//section/div/div/div[2]/div[2]/div[2]/div/p[4]"
     );
+    this.addToCartModalHeader = page.locator(
+      '//*[@id="cartModal"]/div/div/div[1]/h4'
+    );
+    this.addToCartModalDesc = page.locator(
+      '//*[@id="cartModal"]/div/div/div[2]/p[1]'
+    );
+    this.viewCartButton = page.locator(
+      '//*[@id="cartModal"]/div/div/div[2]/p[2]/a'
+    );
+    this.continueShopping = page.locator(
+      '//*[@id="cartModal"]/div/div/div[3]/button'
+    );
+    this.cartModal = page.locator("#cartModal");
   }
 }

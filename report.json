@@ -105,11 +105,11 @@
         {
           "title": "Contact Us Tests",
           "file": "register_login.spec.js",
-          "line": 147,
+          "line": 148,
           "column": 6,
           "specs": [
             {
-              "title": "Test Case 11: Verify Subscription in Cart page",
+              "title": "Test Case 12: Add Products in Cart",
               "ok": true,
               "tags": [],
               "tests": [
@@ -124,21 +124,21 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 13582,
+                      "duration": 19951,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-05-01T19:16:31.128Z",
+                      "startTime": "2025-05-02T18:28:31.226Z",
                       "attachments": []
                     }
                   ],
                   "status": "expected"
                 }
               ],
-              "id": "27ec8054b3dea20b349b-3662074ec8fde7395627",
+              "id": "27ec8054b3dea20b349b-552712777715022ddcfb",
               "file": "register_login.spec.js",
-              "line": 267,
+              "line": 290,
               "column": 8
             }
           ]
@@ -148,8 +148,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-05-01T19:16:30.083Z",
-    "duration": 16536.146,
+    "startTime": "2025-05-02T18:28:30.421Z",
+    "duration": 22472.369000000002,
     "expected": 1,
     "skipped": 0,
     "unexpected": 0,
