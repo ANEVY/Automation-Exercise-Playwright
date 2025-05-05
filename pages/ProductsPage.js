@@ -41,5 +41,9 @@ export default class ProductsPage {
       '//*[@id="cartModal"]/div/div/div[3]/button'
     );
     this.cartModal = page.locator("#cartModal");
+    this.productDetailsQuantity = page.locator('input[name="quantity"]');
+    this.productDetailAddToCart = page.locator(
+      "//section/div/div/div[2]/div[2]/div[2]/div/span/button"
+    );
   }
 }

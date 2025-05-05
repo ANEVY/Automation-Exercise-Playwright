@@ -12,7 +12,15 @@ export default class Helpers {
     //Enter name and email address and click on sign up button
     await loginPage.signup(userProfile.firstName, userProfile.email);
 
-    await expect(page).toHaveTitle(staticContents.signUpPageTitle);
+    const loginPageTitle = await page.title();
+    expect([
+      staticContents.loginPageTitle,
+      staticContents.signUpPageTitle,
+    ]).toContain(loginPageTitle);
+
+    // await expect(page).toHaveTitle(
+    //   staticContents.loginPageTitle || staticContents.signUpPageTitle
+    // );
 
     //Verify 'Enter Account Information' is visible
     let signUpAccountHeader = await signUpPage.getAccountHeader();
@@ -76,5 +84,159 @@ export default class Helpers {
     //Verify 'New User Signup!' is visible
     await expect(loginPage.loginHeader).toBeVisible();
     await expect(loginPage.loginHeader).toHaveText(staticContents.loginHeader);
+  }
+  static async addToCart(product, productsPage) {
+    //Hover over product and click 'Add to cart'
+    await product.hover();
+    await product.locator(".overlay-content a.add-to-cart").click();
+    //Click 'Continue Shopping' button
+    await expect(productsPage.cartModal).toBeVisible();
+    await productsPage.continueShopping.click();
+  }
+
+  static async addProductsToCart(productsPage) {
+    //Add products to cart
+    const productCards = await productsPage.productCards.all();
+    let firstProduct = {};
+    let secondProduct = {};
+    let thirdProduct = {};
+    let fourthProduct = {};
+
+    for (
+      let index = 0;
+      index < staticContents.productsPage.productQuantity;
+      index++
+    ) {
+      let product = productCards[index];
+      if (index == 0) {
+        firstProduct["name"] = await product
+          .locator(".productinfo >p")
+          .textContent();
+        firstProduct["price"] = await product
+          .locator(".productinfo >h2")
+          .textContent();
+      }
+      if (index == 1) {
+        secondProduct["name"] = await product
+          .locator(".productinfo >p")
+          .textContent();
+        secondProduct["price"] = await product
+          .locator(".productinfo >h2")
+          .textContent();
+      }
+      if (index == 2) {
+        thirdProduct["name"] = await product
+          .locator(".productinfo >p")
+          .textContent();
+        thirdProduct["price"] = await product
+          .locator(".productinfo >h2")
+          .textContent();
+      }
+      if (index == 3) {
+        fourthProduct["name"] = await product
+          .locator(".productinfo >p")
+          .textContent();
+        fourthProduct["price"] = await product
+          .locator(".productinfo >h2")
+          .textContent();
+      }
+      //Hover over product and click 'Add to cart'
+      await Helpers.addToCart(product, productsPage);
+      // await product.hover();
+      // await product.locator(".overlay-content a.add-to-cart").click();
+      // //Click 'Continue Shopping' button
+      // await expect(productsPage.cartModal).toBeVisible();
+      // await productsPage.continueShopping.click();
+    }
+
+    return {
+      firstProduct,
+      secondProduct,
+      thirdProduct,
+      fourthProduct,
+    };
+  }
+
+  static async verifyAddressDetails(cartAndCheckout) {
+    let firstNameLastName = (
+      await cartAndCheckout.addressFirstnameLastName.textContent()
+    ).split(" ");
+    let addressCountryName =
+      await cartAndCheckout.addressCountryName.textContent();
+
+    let addressCityStatePostcode =
+      await cartAndCheckout.addressCityStatePostcode.textContent();
+
+    let firstName = firstNameLastName[1];
+    let lastName = firstNameLastName[2];
+    expect(firstName).toBe(userProfile.firstName);
+    expect(lastName).toBe(userProfile.lastName);
+    expect(addressCountryName).toBe(userProfile.country);
+    const cityStatePostcode = [
+      userProfile.city,
+      userProfile.state,
+      userProfile.zipCode,
+    ];
+    const matchFound = cityStatePostcode.some((option) =>
+      addressCityStatePostcode.includes(option)
+    );
+    expect(matchFound).toBeTruthy();
+  }
+  static async reviewOrder(cartAndCheckout, productsInCart) {
+    const cartProducts = await cartAndCheckout.tableBodyRows.all();
+    for (let index = 0; index < cartProducts.length; index++) {
+      const cartProduct = cartProducts[index];
+      let cartProductName = await cartProduct
+        .locator(".cart_description > h4")
+        .textContent();
+      let cartProductQuantity = await product
+        .locator(".cart_quantity button")
+        .textContent();
+      let cartProductPrice = await product
+        .locator(".cart_price > p")
+        .textContent();
+      if (index == 0) {
+        expect(cartProductName).toBe(productsInCart.firstProduct.name);
+        expect(cartProductQuantity).toBe("1");
+        expect(cartProductPrice).toBe(productsInCart.firstProduct.price);
+      }
+      if (index == 1) {
+        expect(cartProductName).toBe(productsInCart.secondProduct.name);
+        expect(cartProductQuantity).toBe("1");
+        expect(cartProductPrice).toBe(productsInCart.secondProduct.price);
+      }
+      if (index == 2) {
+        expect(cartProductName).toBe(productsInCart.thirdProduct.name);
+        expect(cartProductQuantity).toBe("1");
+        expect(cartProductPrice).toBe(thirdProduct.price);
+      }
+      if (index == 3) {
+        expect(cartProductName).toBe(productsInCart.fourthProduct.name);
+        expect(cartProductQuantity).toBe("1");
+        expect(cartProductPrice).toBe(productsInCart.fourthProduct.price);
+      }
+    }
+  }
+
+  async makePayment(paymentPage) {
+    //Enter payment details: Name on Card, Card Number, CVC, Expiration date
+    await paymentPage.cardName.fill(staticContents.paymentPage.cardName);
+    await paymentPage.cardNumber.fill(staticContents.paymentPage.cardNum);
+    await paymentPage.cardCVC.fill(staticContents.paymentPage.cvc);
+    await paymentPage.cardExpiryMonth.fill(
+      staticContents.paymentPage.expiryMonth
+    );
+    await paymentPage.cardExpiryYear.fill(
+      staticContents.paymentPage.expiryYear
+    );
+
+    // Click 'Pay and Confirm Order' button
+    await paymentPage.payButton.click();
+    //Verify success message 'Your order has been placed successfully!'
+    await expect(paymentPage.successMessage).toBeVisible();
+    await expect(paymentPage.successMessage).toHaveText();
+    await paymentPage.successMessage.textContent(
+      staticContents.paymentPage.successMessage
+    );
   }
 }

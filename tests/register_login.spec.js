@@ -8,6 +8,7 @@ import Helpers from "../utils/Helpers";
 import ContactUsPage from "../pages/ContactUsPage";
 import ProductsPage from "../pages/ProductsPage";
 import CartAndCheckout from "../pages/CartAndCheckout";
+import PaymentPage from "../pages/PaymentPage";
 import {
   invalidUser,
   userProfile,
@@ -18,27 +19,27 @@ import {
 //Registration
 test.describe("Automation exercise test cases", () => {
   let loginPage;
-  let headerNavigations;
+  let headerAndFooter;
   let signUpPage;
   let accountCreatedPage;
   let accountDeletedPage;
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
-    headerNavigations = new HeaderAndFooter(page);
+    headerAndFooter = new HeaderAndFooter(page);
     signUpPage = new SignUpPage(page);
     accountCreatedPage = new AccountCreatedPage(page);
     accountDeletedPage = new AcccountDeletedPage(page);
 
     //Navigate to home page
-    await headerNavigations.openHomePage();
+    await headerAndFooter.openHomePage();
   });
 
   test("Test Case 1: Register User", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Signup / Login' button
-    await headerNavigations.gotoLogin();
+    await headerAndFooter.gotoLogin();
     //Verify 'New User Signup!' is visible
     let signupHeader = await loginPage.getSignupHeader();
     await expect(signupHeader).toBeVisible();
@@ -46,13 +47,13 @@ test.describe("Automation exercise test cases", () => {
     //Register user
     await Helpers.registerUser(
       page,
-      headerNavigations,
+      headerAndFooter,
       loginPage,
       signUpPage,
       accountCreatedPage
     );
     //delete user
-    await Helpers.deleteUserAccount(headerNavigations, accountDeletedPage);
+    await Helpers.deleteUserAccount(headerAndFooter, accountDeletedPage);
   });
 
   test("Test Case 2: Login User with correct email and password", async ({
@@ -61,26 +62,26 @@ test.describe("Automation exercise test cases", () => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Signup / Login' button
-    Helpers.verifyLoginHeader(headerNavigations, loginPage);
+    Helpers.verifyLoginHeader(headerAndFooter, loginPage);
     //register user
     await Helpers.registerUser(
       page,
-      headerNavigations,
+      headerAndFooter,
       loginPage,
       signUpPage,
       accountCreatedPage
     );
     //logout user
-    await headerNavigations.logout.click();
+    await headerAndFooter.logout.click();
 
     //Click on 'Signup / Login' button
-    await Helpers.verifyLoginHeader(headerNavigations, loginPage);
+    await Helpers.verifyLoginHeader(headerAndFooter, loginPage);
 
     //Login with valid credentials
     await loginPage.login(userProfile.email, userProfile.password);
 
     //delete user
-    await Helpers.deleteUserAccount(headerNavigations, accountDeletedPage);
+    await Helpers.deleteUserAccount(headerAndFooter, accountDeletedPage);
   });
   test("Test Case 3: Login User with incorrect email and password", async ({
     page,
@@ -88,7 +89,7 @@ test.describe("Automation exercise test cases", () => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Signup / Login' button
-    Helpers.verifyLoginHeader(headerNavigations, loginPage);
+    Helpers.verifyLoginHeader(headerAndFooter, loginPage);
     //Login with valid credentials
     await loginPage.login(invalidUser.email, invalidUser.password);
 
@@ -102,33 +103,33 @@ test.describe("Automation exercise test cases", () => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Signup / Login' button
-    Helpers.verifyLoginHeader(headerNavigations, loginPage);
+    Helpers.verifyLoginHeader(headerAndFooter, loginPage);
     //register user
     await Helpers.registerUser(
       page,
-      headerNavigations,
+      headerAndFooter,
       loginPage,
       signUpPage,
       accountCreatedPage
     );
     //logout user
-    await headerNavigations.logout.click();
+    await headerAndFooter.logout.click();
 
     //Click on 'Signup / Login' button
-    await Helpers.verifyLoginHeader(headerNavigations, loginPage);
+    await Helpers.verifyLoginHeader(headerAndFooter, loginPage);
 
     //Login with valid credentials
     await loginPage.login(userProfile.email, userProfile.password);
 
     //logout user
-    await headerNavigations.logout.click();
+    await headerAndFooter.logout.click();
   });
 
   test("Test Case 5: Register User with existing email", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     //Click on 'Signup / Login' button
-    await headerNavigations.gotoLogin();
+    await headerAndFooter.gotoLogin();
     //Verify 'New User Signup!' is visible
     let signupHeader = await loginPage.getSignupHeader();
     await expect(signupHeader).toBeVisible();
@@ -154,6 +155,7 @@ test.describe("Contact Us Tests", () => {
   let contactUsPage;
   let productsPage;
   let cartAndCheckout;
+  let paymentPage;
 
   test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page);
@@ -164,6 +166,7 @@ test.describe("Contact Us Tests", () => {
     contactUsPage = new ContactUsPage(page);
     productsPage = new ProductsPage(page);
     cartAndCheckout = new CartAndCheckout(page);
+    paymentPage = new PaymentPage(page);
     //Navigate to home page
     await headerAndFooter.openHomePage();
   });
@@ -287,7 +290,7 @@ test.describe("Contact Us Tests", () => {
     await expect(headerAndFooter.subscriptionButton).toBeVisible();
   });
 
-  test.only("Test Case 12: Add Products in Cart", async ({ page }) => {
+  test("Test Case 12: Add Products in Cart", async ({ page }) => {
     //Verify that home page is visible successfully
     await expect(page).toHaveTitle(staticContents.homePageTitle);
     // 4. Click 'Products' button
@@ -358,5 +361,126 @@ test.describe("Contact Us Tests", () => {
     expect(product2TotalPrice).toBe(
       staticContents.productsPage.products.product2.cartPrice
     );
+  });
+  test("Test Case 13: Verify Product quantity in Cart", async ({ page }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    const productCards = await productsPage.productCards.all();
+
+    let productName = await productCards[1]
+      .locator(".productinfo > p")
+      .textContent();
+    //Click 'View Product' for any product on home page
+    await productCards[1].locator("ul.nav li a").click();
+
+    //Verify product detail is opened
+    await expect(productsPage.productName).toBeVisible();
+    //Increase quantity to 4
+    await productsPage.productDetailsQuantity.fill(
+      `${staticContents.productsPage.productQuantity}`
+    );
+    // Click 'Add to cart' button
+    await productsPage.productDetailAddToCart.click();
+    // Click 'View Cart' button
+    await expect(productsPage.cartModal).toBeVisible();
+    await productsPage.viewCartButton.click();
+
+    //Verify that product is displayed in cart page with exact quantity
+    const cartProducts = await cartAndCheckout.tableBodyRows.all();
+    for (const product of cartProducts) {
+      let cartProductName = await product
+        .locator(".cart_description > h4")
+        .textContent();
+      if (cartProductName.toLowerCase() === productName.toLowerCase()) {
+        let productQuantity = await product
+          .locator(".cart_quantity button")
+          .textContent();
+        expect(productQuantity).toBe(
+          `${staticContents.productsPage.productQuantity}`
+        );
+        break;
+      }
+    }
+  });
+  test.only("Test Case 14: Place Order: Register while Checkout", async ({
+    page,
+  }) => {
+    //Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    //Add products to cart
+    const productsInCart = addProductsToCart(productsPage);
+
+    // Click 'Cart' button
+    await headerAndFooter.gotoCart();
+    //Verify that cart page is displayed
+    await expect(page).toHaveTitle(staticContents.cartPageTitle);
+    //Click Proceed To Checkout
+    await cartAndCheckout.proceedToCheckout.click();
+    //Click 'Register / Login' button
+    await expect(cartAndCheckout.checkoutModal).toBeVisible();
+    await cartAndCheckout.modalLoginButton.click();
+    //Fill all details in Signup and create account
+    await Helpers.registerUser(
+      page,
+      headerAndFooter,
+      loginPage,
+      signUpPage,
+      accountCreatedPage
+    );
+    //Click 'Cart' button
+    await headerAndFooter.gotoCart();
+    //Click Proceed To Checkout
+    await cartAndCheckout.proceedToCheckout.click();
+
+    //Verify Address Details
+    await Helpers.verifyAddressDetails(cartAndCheckout);
+
+    //Review Order
+    await Helpers.reviewOrder(cartAndCheckout, productsInCart);
+
+    //Enter description in comment text area and click 'Place Order'
+    await cartAndCheckout.comments.fill(staticContents.orderComment);
+    await cartAndCheckout.placeOrder.click();
+
+    //make payments
+    await Helpers.makePayment(paymentPage);
+    //delete user
+    await Helpers.deleteUserAccount(headerAndFooter, accountDeletedPage);
+  });
+  test("Test Case 15: Place Order: Register before Checkout", async ({
+    page,
+  }) => {
+    // Verify that home page is visible successfully
+    await expect(page).toHaveTitle(staticContents.homePageTitle);
+    // Click 'Signup / Login' button
+    await headerAndFooter.gotoLogin();
+    //Fill all details in Signup and create account
+    await Helpers.registerUser(
+      page,
+      headerAndFooter,
+      loginPage,
+      signUpPage,
+      accountCreatedPage
+    );
+    //Add products to cart
+    const productsInCart = addProductsToCart(productsPage);
+
+    //Click 'Cart' button
+    await headerAndFooter.gotoCart();
+    //Verify that cart page is displayed
+    await expect(page).toHaveTitle(staticContents.cartPageTitle);
+    //Click Proceed To Checkout
+    await cartAndCheckout.proceedToCheckout.click();
+    //Verify Address Details and Review Your Order
+    Helpers.verifyAddressDetails(cartAndCheckout);
+    Helpers.reviewOrder(cartAndCheckout, productsInCart);
+    //Enter description in comment text area and click 'Place Order'
+    await cartAndCheckout.comments.fill(staticContents.orderComment);
+    await cartAndCheckout.placeOrder.click();
+
+    //make payments
+    await Helpers.makePayment(paymentPage);
+    //Click 'Delete Account' button
+    await Helpers.deleteUserAccount(headerAndFooter, accountDeletedPage);
   });
 });

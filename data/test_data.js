@@ -33,8 +33,11 @@ export const staticContents = {
   signUpAccountHeader: "Enter Account Information",
   accountDeletedPageHeader: "Account Deleted!",
   signUpPageTitle: "Automation Exercise - Signup",
+  loginPageTitle: "Automation Exercise - Signup / Login",
   testCasesPageTitle: "Automation Practice Website for UI Testing - Test Cases",
   subscriptionTitle: "Subscription",
+  cartPageTitle: "Automation Exercise - Checkout",
+  orderComment: "Testing site with Playwright",
   subscriptionDesc:
     "Get the most recent updates from our site and be updated your self...",
   contactPage: {
@@ -46,6 +49,7 @@ export const staticContents = {
     totalProductCards: 34,
     productName: "Blue",
     totalSearchResult: 7,
+    productQuantity: 4,
     products: {
       product1: {
         name: "Blue Top",
@@ -60,6 +64,14 @@ export const staticContents = {
         price: "Rs. 400",
       },
     },
+  },
+  paymentPage: {
+    cardName: "Nevy Papi",
+    cardNum: "4111 1111 1111 1111",
+    cvc: "123",
+    expiryMonth: "12",
+    expiryYear: "34",
+    successMessage: "Your order has been placed successfully!",
   },
 };
 
