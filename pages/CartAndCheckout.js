@@ -28,7 +28,18 @@ export default class CartAndCheckout {
     this.addressCityStatePostcode = page.locator(
       "#address_delivery .address_city"
     );
-    this.comments = page.locator('textarea[name="message"]]');
+
+    this.billingFirstnameLastName = page.locator(
+      "#address_invoice .address_firstname"
+    );
+    this.billingCountryName = page.locator(
+      "#address_invoice .address_country_name "
+    );
+    this.billingCityStatePostcode = page.locator(
+      "#address_invoice .address_city"
+    );
+    this.comments = page.locator('textarea[name="message"]');
     this.placeOrder = page.locator('//*[@id="cart_items"]/div/div[7]/a');
+    this.emptyCart = page.locator('//*[@id="empty_cart"]/p');
   }
 }

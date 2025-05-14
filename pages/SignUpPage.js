@@ -22,7 +22,7 @@ export default class SignUpPage {
     this.mobileNumber = page.locator('input[data-qa="mobile_number"]');
     this.country = page.locator('select[data-qa="country"]');
     this.createButton = page.locator('button[data-qa="create-account"]');
-    this.accountHeader = page.locator("#form > div > div > div > div > h2");
+    this.accountHeader = page.locator('//*[@id="form"]/div/div/div/div/h2');
     this.addressHeader = page.locator(
       "#form > div > div > div > div > form > h2"
     );

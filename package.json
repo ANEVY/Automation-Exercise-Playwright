@@ -10,7 +10,8 @@
     "test-on-webkit": "npx playwright test --project=webkit",
     "test-on-chrome-debug": "npx playwright test --project=chromium --debug",
     "headed-mode": "npx playwright test --headed",
-    "code-gen": "npx playwright codegen"
+    "code-gen": "npx playwright codegen",
+    "test-on-firefox-ui": "npx playwright test --project=firefox --ui"
   },
   "keywords": [],
   "author": "",

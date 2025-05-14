@@ -40,16 +40,24 @@ export const staticContents = {
   orderComment: "Testing site with Playwright",
   subscriptionDesc:
     "Get the most recent updates from our site and be updated your self...",
+  emptyCardPartialString: "Cart is empty!",
+  womenCategory: "Women",
+  menCategory: "Women",
+  recommendedItemsHeader: "recommended items",
   contactPage: {
     getIntouch: "Get In Touch",
     successAlert: "Success! Your details have been submitted successfully.",
   },
   productsPage: {
     pageTitle: "Automation Exercise - All Products",
+    allProductsHeader: "All Products",
     totalProductCards: 34,
     productName: "Blue",
     totalSearchResult: 7,
     productQuantity: 4,
+    mainCategories: 3,
+    brandLists: 8,
+    selectedBrand: 0,
     products: {
       product1: {
         name: "Blue Top",
@@ -64,6 +72,15 @@ export const staticContents = {
         price: "Rs. 400",
       },
     },
+    review: {
+      cartQuantity: 1,
+      writeReviewText: "Write Your Review",
+      name: "John Cosmos",
+      email: "cmo@gmail.com",
+      message:
+        "Hello Automation exercise this is are very impressive test cases you have put together",
+      successMessage: "Thank you for your review.",
+    },
   },
   paymentPage: {
     cardName: "Nevy Papi",
@@ -72,6 +89,7 @@ export const staticContents = {
     expiryMonth: "12",
     expiryYear: "34",
     successMessage: "Your order has been placed successfully!",
+    orderPlacedMessage: "Congratulations! Your order has been confirmed!",
   },
 };
 

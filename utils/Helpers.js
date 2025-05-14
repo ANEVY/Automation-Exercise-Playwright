@@ -23,9 +23,9 @@ export default class Helpers {
     // );
 
     //Verify 'Enter Account Information' is visible
-    let signUpAccountHeader = await signUpPage.getAccountHeader();
-    await expect(signUpAccountHeader).toBeVisible();
-    await expect(signUpAccountHeader).toHaveText(
+    // let signUpAccountHeader = await signUpPage.getAccountHeader();
+    await expect(signUpPage.accountHeader).toBeVisible();
+    await expect(signUpPage.accountHeader).toHaveText(
       staticContents.signUpAccountHeader
     );
     // create account
@@ -64,6 +64,11 @@ export default class Helpers {
     await expect(loggedInUser).toContainText(userProfile.firstName);
   }
 
+  static async verifyLoggedInUser(headerNavigations) {
+    let loggedInUser = await headerNavigations.getLoggedInUser();
+    await expect(loggedInUser).toBeVisible();
+    await expect(loggedInUser).toContainText(userProfile.firstName);
+  }
   static async deleteUserAccount(headerNavigations, accountDeletedPage) {
     //Click 'Delete Account' button
     await headerNavigations.deleteAccount.click();
@@ -94,7 +99,7 @@ export default class Helpers {
     await productsPage.continueShopping.click();
   }
 
-  static async addProductsToCart(productsPage) {
+  static async addProductsToCart(productsPage, productQuantity = 0) {
     //Add products to cart
     const productCards = await productsPage.productCards.all();
     let firstProduct = {};
@@ -102,11 +107,12 @@ export default class Helpers {
     let thirdProduct = {};
     let fourthProduct = {};
 
-    for (
-      let index = 0;
-      index < staticContents.productsPage.productQuantity;
-      index++
-    ) {
+    let loopCount =
+      productQuantity > 0
+        ? productQuantity
+        : staticContents.productsPage.productQuantity;
+
+    for (let index = 0; index < loopCount; index++) {
       let product = productCards[index];
       if (index == 0) {
         firstProduct["name"] = await product
@@ -157,7 +163,7 @@ export default class Helpers {
     };
   }
 
-  static async verifyAddressDetails(cartAndCheckout) {
+  static async verifyDeliveryAddressDetails(cartAndCheckout) {
     let firstNameLastName = (
       await cartAndCheckout.addressFirstnameLastName.textContent()
     ).split(" ");
@@ -182,6 +188,32 @@ export default class Helpers {
     );
     expect(matchFound).toBeTruthy();
   }
+  static async verifyBillingAddressDetails(cartAndCheckout) {
+    let firstNameLastName = (
+      await cartAndCheckout.billingFirstnameLastName.textContent()
+    ).split(" ");
+    let addressCountryName =
+      await cartAndCheckout.billingCountryName.textContent();
+
+    let addressCityStatePostcode =
+      await cartAndCheckout.billingCityStatePostcode.textContent();
+
+    let firstName = firstNameLastName[1];
+    let lastName = firstNameLastName[2];
+    expect(firstName).toBe(userProfile.firstName);
+    expect(lastName).toBe(userProfile.lastName);
+    expect(addressCountryName).toBe(userProfile.country);
+    const cityStatePostcode = [
+      userProfile.city,
+      userProfile.state,
+      userProfile.zipCode,
+    ];
+    const matchFound = cityStatePostcode.some((option) =>
+      addressCityStatePostcode.includes(option)
+    );
+    expect(matchFound).toBeTruthy();
+  }
+
   static async reviewOrder(cartAndCheckout, productsInCart) {
     const cartProducts = await cartAndCheckout.tableBodyRows.all();
     for (let index = 0; index < cartProducts.length; index++) {
@@ -218,7 +250,11 @@ export default class Helpers {
     }
   }
 
-  async makePayment(paymentPage) {
+  static async makePayment(page, paymentPage) {
+    page.on("dialog", async (dialog) => {
+      console.log(`Dialog message: ${dialog.message()}`);
+      await dialog.dismiss();
+    });
     //Enter payment details: Name on Card, Card Number, CVC, Expiration date
     await paymentPage.cardName.fill(staticContents.paymentPage.cardName);
     await paymentPage.cardNumber.fill(staticContents.paymentPage.cardNum);
@@ -230,13 +266,47 @@ export default class Helpers {
       staticContents.paymentPage.expiryYear
     );
 
-    // Click 'Pay and Confirm Order' button
+    //Click 'Pay and Confirm Order' button
     await paymentPage.payButton.click();
-    //Verify success message 'Your order has been placed successfully!'
-    await expect(paymentPage.successMessage).toBeVisible();
-    await expect(paymentPage.successMessage).toHaveText();
-    await paymentPage.successMessage.textContent(
-      staticContents.paymentPage.successMessage
+    // Verify success message 'Your order has been placed successfully!'
+    // await expect(paymentPage.successMessage).toBeVisible();
+    // await expect(paymentPage.successMessage).toHaveText();
+    // await paymentPage.successMessage.textContent(
+    //   staticContents.paymentPage.successMessage
+    // );
+    await expect(paymentPage.orderPlacedMessage).toBeVisible();
+    await expect(paymentPage.orderPlacedMessage).toHaveText(
+      staticContents.paymentPage.orderPlacedMessage
     );
+  }
+  static async verifyBrandProducts(productsPage, index) {
+    //Click on any brand name
+    let brands = await productsPage.brandlists.all();
+    let selectedBrand = brands[index];
+    let brandText = await selectedBrand
+      .locator("a span.pull-right")
+      .textContent();
+    let totalBrandProducts = parseInt(
+      brandText.replace("(", "").replace(")", "").trim()
+    );
+    let brandName = brandText.split(")")[1];
+
+    await selectedBrand.locator("a").click();
+    //Verify that user is navigated to brand page and brand products are displayed
+    //await expect(page).toHaveURL(/.*brand_products.*/);
+    await expect(productsPage.featureItemsHeader).toContainText(brandName);
+    await expect(productsPage.productCards).toHaveCount(totalBrandProducts);
+  }
+  static async searchAndVerifyProducts(
+    productsPage,
+    searchText,
+    totalSearchResult
+  ) {
+    await productsPage.searchProducts.fill(searchText);
+    await productsPage.submitSearch.click();
+
+    await expect(productsPage.searchedProducts).toBeVisible();
+
+    await expect(productsPage.productCards).toHaveCount(totalSearchResult);
   }
 }

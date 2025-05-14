@@ -81,7 +81,7 @@ export default class HeaderAndFooter {
     await this.productsPage.click();
   }
 
-  async logout() {
+  async logoutUser() {
     await this.logout.click();
   }
 
